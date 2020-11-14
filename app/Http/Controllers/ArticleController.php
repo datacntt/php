@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
+use App\Models\Article as ModelsArticle;
 
 class ArticleController extends Controller
 {
@@ -14,7 +16,9 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        echo "hello";
+        $articles  = Article::all();
+        return view('article.list')->with('article',$articles);
+
     }
 
     /**
@@ -25,6 +29,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('article.create');
     }
 
     /**
@@ -36,6 +41,17 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Article();
+        $data->title = $request->title;
+        $data->content = $request->content;
+        $data->save();
+
+
+
+       
+        
+
+        return redirect()->route('baiviet.create');
     }
 
     /**
