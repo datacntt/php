@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::resource('/baiviet', 'ArticleController');
 
 
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
